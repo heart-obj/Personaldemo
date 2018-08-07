@@ -19,10 +19,10 @@
 			</el-row>
 		</el-header>
 		<div class="check_box">
-			
+			<el-button class="check_btn" type="primary" icon="el-icon-search">搜索饿了么商家、商品名称</el-button>
 		</div>
 		<el-main class="content_box">
-			
+			<componentgoods></componentgoods>
 		</el-main>
 		<el-footer class="footer_box">
 			
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+	import componentgoods from '../componentgoods/indexgoods'
 	export default{
 		name:'componentindex',
 		data(){
@@ -38,6 +39,9 @@
 				name:'componentindex'
 			}
 		},
+		components:{
+			componentgoods:componentgoods
+		}
 	} 
 </script>
 
@@ -84,6 +88,7 @@
 	.check_box{
 		width: 100%;
 		height: 60px;
+		box-sizing: border-box;
 		background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#0af), to(#0085ff));
 	    background-image: -webkit-linear-gradient(left, #0af, #0085ff);
 	    background-image: -moz-linear-gradient(left, #0af, #0085ff);
@@ -91,10 +96,19 @@
 	    background-image: linear-gradient(left, #0af, #0085ff);
 	    position: sticky;
 	    top: 0;
+	    padding: 10px 15px;
 	}
+	.check_btn{
+		width: 100%;
+		height: 100%;
+		background: #ffffff;
+		text-align: center;
+		color: #9e9e9e;
+		font-size: 14px;
+	}
+	
 	.content_box{
-		
-		
+		width: 100%;
 	}
 	
 	.footer_box{
