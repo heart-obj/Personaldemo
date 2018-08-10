@@ -9,7 +9,7 @@
 				<el-menu-item index="1" class="screen-list">
 					<el-dropdown trigger="click" @command="handleCommand">
 						<div class="el-dropdown-link">
-				        	{{dropdown}}<i class="el-icon-arrow-down el-icon--right"></i>
+				        	{{dropdown}}<i class="el-icon-arrow-down el-icon--right dropdown-icon"></i>
 				     	</div>
 				     	<el-dropdown-menu slot="dropdown">
 					        <el-dropdown-item command="综合排序">综合排序</el-dropdown-item>
@@ -26,7 +26,6 @@
 			</el-menu>
 		</div>
 	</div>
-	
 </template>
 
 <script>
@@ -55,6 +54,9 @@
 </script>
 
 <style scoped>
+	*{
+		border: none;
+	}
 	.goods_box{
 		width: 100%;
 		background: #ffffff;
@@ -76,5 +78,19 @@
 		line-height: 30px;
 		color: #666;
 	}
-	
+	.is-active{
+		color: #333;
+		background: none;
+	}
+	.is-active:hover,.is-active:focus{
+		background: none;
+	}
+	.is-active div{
+		color: #333;
+	}
+	.dropdown-icon{
+		width: 14px;
+		font-size: 12px;
+		margin-left: 0;
+	}
 </style>
