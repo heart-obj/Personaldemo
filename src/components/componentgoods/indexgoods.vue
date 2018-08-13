@@ -116,4 +116,7 @@
 		font-size: 12px;
 		margin-left: 0;
 	}
+	.goodslist-box{
+		padding-bottom: 60px;
+	}
 </style>

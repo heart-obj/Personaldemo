@@ -1,14 +1,14 @@
 <template>
 	<el-row>
-		<el-col :span="24" class="list-box">
+		<el-col v-for="(itme,key) in datalist" :span="24" class="list-box" v-bind:key="key">
 			<div>
 				<div class="merchants-logo">
 					<img src="https://fuss10.elemecdn.com/7/9f/dd6421c5d53235ff472a69530ca8djpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"/>
 				</div>
 				<div class="merchants-detail">
-					<div class="merchants-name"><h3><i></i>德克士</h3></div>
+					<div class="merchants-name"><h3><i></i>{{itme.restaurant.name}}</h3></div>
 					<div><el-rate
-					  v-model="value5"
+					  v-model="itme.restaurant.rating"
 					  disabled
 					  show-score
 					  text-color="#ff9900"
@@ -16,138 +16,12 @@
 					</el-rate></div>
 					<div>
 						<div class="price-box">
-							<span>￥39起送</span>
-							<span>配送费￥5</span>
+							<span>￥{{itme.restaurant.float_minimum_order_amount}}起送</span>
+							<span>配送费￥{{itme.restaurant.float_delivery_fee}}</span>
 						</div>
 						<div class="date-box">
-							<span>2.19km</span>
-							<span>40分钟</span>
-						</div>
-					</div>
-					
-				</div>
-				<div class="activity-box">
-					<el-collapse >
-						<el-collapse-item name="1" >
-							<template slot="title" >
-								<div class="activity-title">
-									<span>满20减11，满40减16，满80减32</span>
-									<span class="activity-num">活动6</span>
-								</div>
-								
-							</template>
-							<div class="activity-list">五折优惠享不停！！！</div>
-						</el-collapse-item>
-					</el-collapse>
-				</div>
-			</div>
-		</el-col>
-		<el-col :span="24" class="list-box">
-			<div>
-				<div class="merchants-logo">
-					<img src="https://fuss10.elemecdn.com/7/9f/dd6421c5d53235ff472a69530ca8djpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"/>
-				</div>
-				<div class="merchants-detail">
-					<div class="merchants-name"><h3><i></i>德克士</h3></div>
-					<div><el-rate
-					  v-model="value5"
-					  disabled
-					  show-score
-					  text-color="#ff9900"
-					  score-template="{value}">
-					</el-rate></div>
-					<div>
-						<div class="price-box">
-							<span>￥39起送</span>
-							<span>配送费￥5</span>
-						</div>
-						<div class="date-box">
-							<span>2.19km</span>
-							<span>40分钟</span>
-						</div>
-					</div>
-					
-				</div>
-				<div class="activity-box">
-					<el-collapse >
-						<el-collapse-item name="1" >
-							<template slot="title" >
-								<div class="activity-title">
-									<span>满20减11，满40减16，满80减32</span>
-									<span class="activity-num">活动6</span>
-								</div>
-								
-							</template>
-							<div class="activity-list">五折优惠享不停！！！</div>
-						</el-collapse-item>
-					</el-collapse>
-				</div>
-			</div>
-		</el-col>
-		<el-col :span="24" class="list-box">
-			<div>
-				<div class="merchants-logo">
-					<img src="https://fuss10.elemecdn.com/7/9f/dd6421c5d53235ff472a69530ca8djpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"/>
-				</div>
-				<div class="merchants-detail">
-					<div class="merchants-name"><h3><i></i>德克士</h3></div>
-					<div><el-rate
-					  v-model="value5"
-					  disabled
-					  show-score
-					  text-color="#ff9900"
-					  score-template="{value}">
-					</el-rate></div>
-					<div>
-						<div class="price-box">
-							<span>￥39起送</span>
-							<span>配送费￥5</span>
-						</div>
-						<div class="date-box">
-							<span>2.19km</span>
-							<span>40分钟</span>
-						</div>
-					</div>
-					
-				</div>
-				<div class="activity-box">
-					<el-collapse >
-						<el-collapse-item name="1" >
-							<template slot="title" >
-								<div class="activity-title">
-									<span>满20减11，满40减16，满80减32</span>
-									<span class="activity-num">活动6</span>
-								</div>
-								
-							</template>
-							<div class="activity-list">五折优惠享不停！！！</div>
-						</el-collapse-item>
-					</el-collapse>
-				</div>
-			</div>
-		</el-col>
-		<el-col :span="24" class="list-box">
-			<div>
-				<div class="merchants-logo">
-					<img src="https://fuss10.elemecdn.com/7/9f/dd6421c5d53235ff472a69530ca8djpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/"/>
-				</div>
-				<div class="merchants-detail">
-					<div class="merchants-name"><h3><i></i>德克士</h3></div>
-					<div><el-rate
-					  v-model="value5"
-					  disabled
-					  show-score
-					  text-color="#ff9900"
-					  score-template="{value}">
-					</el-rate></div>
-					<div>
-						<div class="price-box">
-							<span>￥39起送</span>
-							<span>配送费￥5</span>
-						</div>
-						<div class="date-box">
-							<span>2.19km</span>
-							<span>40分钟</span>
+							<span>{{itme.restaurant.distance/1000}}km</span>
+							<span>{{itme.restaurant.order_lead_time}}分钟</span>
 						</div>
 					</div>
 					
@@ -177,8 +51,7 @@
 		data(){
 			return {
 				name:"商品列表",
-				datalist:'',
-				value5:4.7
+				datalist:''
 			}
 		},
 		created(){
@@ -203,7 +76,7 @@
 					}
 				}).then((response)=>{
 					console.log(response.data.items);
-					datalist=response.data.items
+					$this.datalist=response.data.items;
 				}).catch((response)=>{
 					console.log(response)
 				})
