@@ -49,7 +49,7 @@
 			weather(){
 				this.$http({
 					method:"get",
-					url:"api/open/api/weather/json.shtml",
+					url:"api/a/open/api/weather/json.shtml",
 					params:{
 						city:"成都"
 					}
@@ -124,6 +124,7 @@
 	    position: sticky;
 	    top: 0;
 	    padding: 10px 15px;
+	    z-index: 999;
 	}
 	.check_btn{
 		width: 100%;

@@ -12,11 +12,7 @@
 				        	{{dropdown}}<i class="el-icon-arrow-down el-icon--right dropdown-icon"></i>
 				     	</div>
 				     	<el-dropdown-menu slot="dropdown">
-					        <el-dropdown-item command="综合排序">综合排序</el-dropdown-item>
-					        <el-dropdown-item command="好评优先">好评优先</el-dropdown-item>
-					        <el-dropdown-item command="销量最高">销量最高</el-dropdown-item>
-					        <el-dropdown-item command="配送最快">配送最快</el-dropdown-item>
-					        <el-dropdown-item command="配送费最低">配送费最低</el-dropdown-item>
+					        <el-dropdown-item v-for="(value,key) in droplist" v-bind:command="value.name" v-bind:key="key">{{value.name}}</el-dropdown-item>
 					    </el-dropdown-menu>
 					</el-dropdown>
 				</el-menu-item>
@@ -25,21 +21,30 @@
 				<el-menu-item index="4" class="screen-list">筛选</el-menu-item>
 			</el-menu>
 		</div>
+		<div class="goodslist-box">
+			<goodslist></goodslist>
+		</div>
 	</div>
 </template>
 
 <script>
 	import goodssort from './goodssort';
+	import goodslist from './goodslist';
 	export default{
 		name:"goods",
 		data(){
 			return {
 				name:"goods",
-				dropdown:'综合排序'
+				dropdown:'综合排序',
+				droplist:''
 			}
 		},
 		components:{
-			goodssort:goodssort
+			goodssort:goodssort,
+			goodslist:goodslist
+		},
+		created(){
+			this.loaddrop()
 		},
 		methods:{
 			handleCommand(command) {
@@ -47,6 +52,23 @@
 		    },
 		    handleCheck(index){
 		    	console.log(index)
+		    },
+		    loaddrop(){
+		    	let $this=this;
+		    	$this.$http({
+		    		method:"get",
+		    		url:"api/b/restapi/shopping/v1/restaurants/outside_filter/attributes",
+		    		params:{
+		    			latitude:"30.573095",
+		    			longitude:"104.066143",
+		    			terminal:"h5"
+		    		}
+		    	}).then((response)=>{
+		    		$this.droplist=response.data.inside_sort_filter;
+		  
+		    	}).catch((response)=>{
+		    		console.log(response)
+		    	})
 		    }
 		}
 	}
@@ -77,6 +99,7 @@
 		float: left;
 		line-height: 30px;
 		color: #666;
+		padding:0 !important;
 	}
 	.is-active{
 		color: #333;

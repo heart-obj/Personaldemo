@@ -41,10 +41,12 @@
 		width: 100%;
 		height: 60px;
 		position: fixed;
+		background: #ffffff;
 		bottom: 0;
 		left: 0;
+		box-sizing: border-box;
 		box-shadow:0 0 12px rgba(0,0,0,.5);
-		
+		z-index: 999;
 	}
 	.el-menu-box{
 		border: none;
