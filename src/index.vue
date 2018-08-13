@@ -1,13 +1,18 @@
 <template>
   <div id="app">
+  	<footerTabs></footerTabs>
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: ''
-}
+	import footerTabs from './components/componentindex';
+	export default {
+	  name: '',
+	  components:{
+	  	footerTabs:footerTabs
+	  }
+	}
 </script>
 
 <style>
