@@ -24,6 +24,7 @@
 		<el-main class="content_box">
 			<componentgoods></componentgoods>
 		</el-main>
+		
 	</div>
 </template>
 
@@ -47,26 +48,26 @@
 		},
 		methods:{
 			weather(){
-				this.$http({
+				let $this=this;
+				$this.$http({
 					method:"get",
 					url:"api/a/open/api/weather/json.shtml",
 					params:{
 						city:"成都"
 					}
 				}).then((response)=>{
-					var weekArr=new Array("星期日","星期一","星二","星期三","星期四","星期五","星期六");
+					var weekArr=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
 					
 					var week=new Date().getDay();
-					console.log(weekArr[week]);
 					var weekData=response.data.data.forecast;
 					for(var i=0;i<weekData.length;i++){
 						if(weekData[i].date.indexOf(weekArr[week])!=-1){
-							this.temperature=weekData[i].high;
-							this.weathers=weekData[i].type
+							$this.temperature=weekData[i].high;
+							$this.weathers=weekData[i].type
 						}
 					}
 				}).catch((response)=>{
-					console.log(response)
+					console.log("频繁调用(3s/次)")
 				})
 			}
 		}

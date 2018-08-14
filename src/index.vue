@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-  	<footerTabs></footerTabs>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-	import footerTabs from './components/componentindex';
+	import indexcontent from './components/indexpage';
 	export default {
 	  name: '',
 	  components:{
-	  	footerTabs:footerTabs
+	  	indexcontent:indexcontent
 	  }
 	}
 </script>

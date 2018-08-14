@@ -1,18 +1,21 @@
 <template>
 	<el-container>
+		<div>
+			<router-view></router-view>
+		</div>
 		<el-footer class="footer_box">
 			<el-menu class="el-menu-box" default-active="activeindex" @select="handleSelect">
 				<el-menu-item index="1" class="menu-list">
-					<router-link to="/homepage" tag="div">首页</router-link>
+					<router-link to="/home/homepage" tag="div">首页</router-link>
 				</el-menu-item>
 				<el-menu-item index="2" class="menu-list">
-					<router-link to="/found" tag="div">发现</router-link>
+					<router-link to="/home/found" tag="div">发现</router-link>
 				</el-menu-item>
 				<el-menu-item index="3" class="menu-list">
-					<router-link to="/indent" tag="div">订单</router-link>
+					<router-link to="/home/indent" tag="div">订单</router-link>
 				</el-menu-item>
 				<el-menu-item index="4" class="menu-list">
-					<router-link to="/personal" tag="div">我的</router-link>
+					<router-link to="/home/personal" tag="div">我的</router-link>
 				</el-menu-item>
 			</el-menu>
 		</el-footer>
@@ -46,7 +49,7 @@
 		left: 0;
 		box-sizing: border-box;
 		box-shadow:0 0 12px rgba(0,0,0,.5);
-		z-index: 999;
+		z-index: 9999;
 	}
 	.el-menu-box{
 		border: none;

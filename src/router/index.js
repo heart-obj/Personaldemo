@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import home from '@/components/indexpage';
 import homepage from '@/components/componenHomepage/homepage';
 import found from "@/components/componentFound/found";
 import indent from "@/components/componentIndent/indent";
 import personal from "@/components/componentPersonal/personal";
+import merchant from "@/components/componentMerchants/merchant";
 
 Vue.use(Router)
 
@@ -11,27 +13,41 @@ export default new Router({
   routes: [
   	{
   		path: '/',
-  		redirect:'/homepage'
+  		redirect:'/home/homepage'
   	},
     {
-    	path: '/homepage',
-    	name: 'homepage',
-    	component: homepage
+    	path: '/home',
+    	name: 'home',
+    	component: home,
+    	children:[
+	    	{
+	    		path: '/',
+    			name: 'home',
+    			component: homepage,
+	    	},
+	    	{
+	    		path: '/',
+    			name: 'home',
+    			component: found,
+	    	},
+	    	{
+	    		path: '/',
+    			name: 'home',
+    			component: indent,
+	    	},
+	    	{
+	    		path: '/',
+    			name: 'home',
+    			component: personal,
+	    	}
+    	]
     },
+    
     {
-    	path: '/found',
-    	name: 'found',
-    	component: found
-    },
-    {
-    	path: '/indent',
-    	name: 'indent',
-    	component: indent
-    },
-    {
-    	path: '/personal',
-    	name: 'personal',
-    	component: personal
-    }
+		    	path:'/merchant',
+		    	name:'merchant',
+		    	component:merchant
+		    }
+    
   ]
 })
