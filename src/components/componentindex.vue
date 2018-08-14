@@ -1,21 +1,19 @@
 <template>
 	<el-container>
-		<div>
-			<router-view></router-view>
-		</div>
+		<div :is="ismodel"></div>
 		<el-footer class="footer_box">
 			<el-menu class="el-menu-box" default-active="activeindex" @select="handleSelect">
-				<el-menu-item index="1" class="menu-list">
-					<router-link to="/home/homepage" tag="div">首页</router-link>
+				<el-menu-item index="homepage" class="menu-list">
+					首页
 				</el-menu-item>
-				<el-menu-item index="2" class="menu-list">
-					<router-link to="/home/found" tag="div">发现</router-link>
+				<el-menu-item index="found" class="menu-list">
+					发现
 				</el-menu-item>
-				<el-menu-item index="3" class="menu-list">
-					<router-link to="/home/indent" tag="div">订单</router-link>
+				<el-menu-item index="indent" class="menu-list">
+					订单
 				</el-menu-item>
-				<el-menu-item index="4" class="menu-list">
-					<router-link to="/home/personal" tag="div">我的</router-link>
+				<el-menu-item index="personal" class="menu-list">
+					我的
 				</el-menu-item>
 			</el-menu>
 		</el-footer>
@@ -23,17 +21,33 @@
 </template>
 
 <script>
+	import homepage from './componenHomepage/homepage';
+	import found from "./componentFound/found";
+	import indent from "./componentIndent/indent";
+	import personal from "./componentPersonal/personal";
 	export default{
 		name:'componentindex',
 		data(){
 			return{
 				name:'componentindex',
-				activeindex:"1"
+				activeindex:"1",
+				homepage:"homepage",
+				found:"found",
+				indent:"indent",
+				personal:"personal",
+				ismodel:"homepage"
+				
 			}
+		},
+		components:{
+			homepage:homepage,
+			found:found,
+			indent:indent,
+			personal:personal
 		},
 		methods: {
 	      	handleSelect(key, keyPath) {
-	        	console.log(key, keyPath);
+	        	this.ismodel=key;
 	      	}
 	    }
 	} 

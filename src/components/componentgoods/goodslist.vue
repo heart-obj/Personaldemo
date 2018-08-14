@@ -85,11 +85,11 @@
 					url:"api/b/restapi/shopping/v3/restaurants",
 					params:{
 						latitude:"30.573095",
-		    			longitude:"104.066143",
-		    			terminal:"h5",
-		    			offset:"0",
-		    			limit:"8",
-		    			extras: "activities",
+						longitude:"104.066143",
+						terminal:"h5",
+						offset:"0",
+						limit:"8",
+						extras: "activities",
 						extra_filters: "home",
 						rank_id:"" 
 					}
@@ -108,11 +108,11 @@
 					url:"api/b/restapi/shopping/v3/restaurants",
 					params:{
 						latitude:"30.573095",
-		    			longitude:"104.066143",
-		    			terminal:"h5",
-		    			offset:offset,
-		    			limit:"8",
-		    			extras: "activities",
+						longitude:"104.066143",
+						terminal:"h5",
+						offset:offset,
+						limit:"8",
+						extras: "activities",
 						extra_filters: "home",
 						rank_id:"" 
 					}
