@@ -117,11 +117,14 @@
 						rank_id:"" 
 					}
 				}).then((response)=>{
-					console.log(response.data.items);
-					for(var i=0;i<response.data.items.length;i++){
-						$this.datalist.push(response.data.items[i])	
-					};
-					$this.loadof=true;
+					if($this.loadof==false){
+						console.log(response.data.items);
+						for(var i=0;i<response.data.items.length;i++){
+							$this.datalist.push(response.data.items[i])	
+						};
+						$this.loadof=true;
+					}
+					
 				}).catch((response)=>{
 					console.log(response)
 				})

@@ -22,4 +22,7 @@
   text-align: center;
   color: #2c3e50;
 }
+.el-message-box{
+	width: 280px !important;
+}
 </style>
