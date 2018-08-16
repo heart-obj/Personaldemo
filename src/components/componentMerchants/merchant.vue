@@ -52,10 +52,8 @@
 				</el-menu>
 			</div>
 			<el-container>
-				<div :is="ismodel"></div>
+				<div :is="showModel" v-bind:clickname="name"></div>
 			</el-container>
-			
-			
 		</el-container>
 	</div>
 	
@@ -74,13 +72,18 @@
 				menus:"menus",
 				comments:"comments",
 				merchantsdetails:"merchantsdetails",
-				ismodel:"menus"
+				
 			}
 		},
 		components:{
 			menus:menus,
 			comments:comments,
 			merchantsdetails:merchantsdetails,
+		},
+		computed:{
+			showModel(){
+				return this.$store.state.merchants
+			}
 		},
 		methods:{
 			handclick(){
@@ -104,7 +107,9 @@
       		},
       		handclickTabs(index,keyPath){
       			console.log(index)
-      			this.ismodel=index;
+      			this.name=index;
+      			this.$store.commit("newAuthor",index);
+      			this.$store.commit("newMerchants",index);
       		}
       	
 		}

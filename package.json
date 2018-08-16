@@ -17,9 +17,13 @@
     "axios": "^0.18.0",
     "babel-preset-es2015": "^6.24.1",
     "element-ui": "^2.4.5",
+    "npm": "^6.4.0",
     "swiper": "^4.3.5",
+    "to": "^0.2.9",
+    "update": "^0.7.4",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -1,6 +1,7 @@
 <template>
 	<div>
-		商家详情
+		{{author}}
+		11111
 	</div>
 </template>
 
@@ -10,6 +11,12 @@
 		data(){
 			return {
 				name:"商家详情"
+			}
+		},
+//		props:["clickname"]
+		computed:{
+			author(){
+				return this.$store.state.author
 			}
 		}
 	}
