@@ -1,27 +1,207 @@
 <template>
-	<div class="commend-box">
-		{{author}}商家推荐
+	
+	<div class="commend-box swiper-container">
+		<div style="font-size: 26px;color: #000000;">商家推荐</div>
+		<div class="swiper-wrapper">
+	        <div v-for="(val,key) in cartlist" class="swiper-slide" v-bind:key="key">
+	        	<div class="logo-img"><img src="//fuss10.elemecdn.com/0/ef/c440d90e4af8833e6abc5a0a1bf2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/" alt="" width="100%" height="100%" /></div>
+	        	<div>
+	        		<span class="food-name">{{val.goodsname}}</span>
+	        		<span class="sales">月售{{val.sales}} 好评率{{val.rete}}</span>
+	        	</div>
+	        	<div>
+	        		<span style="font-size:20px;margin-left: 2px;color: #fb5300;">￥17.9</span>
+	        		<span v-if="val.num>0" class="el-icon-remove" style="color: #0085FF; margin-right: 2px;font-size: 20px;" @click="handleReduce(key)"></span>
+        			<span v-if="val.num>0">{{val.num}}</span>
+        			<span class="el-icon-circle-plus" style="color: #0085FF;margin-left: 2px;font-size: 20px;" @click="handleAdd(key)"></span>
+	        	</div>
+	        </div>
+		</div>
+		<div class="shoppingCart">
+			<div class="cart-bg">
+				<div class="cart-bg-icon"></div>
+				<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
+				<span v-if="shoppingNum>0" class="cart-num">1</span>
+			</div>
+			<p style="text-align: left;width: auto;display: inline-block;float: left;">
+				<span style="color: #ffffff;font-size: 20px;">￥7</span>
+				<del style="color: #999;font-size: 14px;">￥24</del>
+			</p>
+			<div class="off-btn">
+				结算
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
+	import Swiper from 'swiper';
 	export default{
 		name:"comend",
 		data(){
 			return {
-				name:"商家推荐"
+				name:"商家推荐",
+				shoppingNum:0,
+				cartlist:[
+					{
+						goodsname:"农家炒肉双拼套餐",
+						sales:"11",
+						rete:"100%",
+						num:0,
+					},
+					{
+						goodsname:"农家炒肉双拼套餐",
+						sales:"11",
+						rete:"100%",
+						num:0,
+					},
+					{
+						goodsname:"农家炒肉双拼套餐",
+						sales:"11",
+						rete:"100%",
+						num:0,
+					}
+				]
 			}
+		},
+		mounted(){
+			new Swiper('.swiper-container',{
+				direction:"horizontal",
+				loop: true,
+				height:"100%",
+				slidesPerView:3,
+				slidesPerGroup:1,
+				
+			})
 		},
 		computed:{
 			author(){
 				return this.$store.state.author
+			},
+			shoppingNum(){
+				let shoppingNum=0;
+				for(var i=0;i<this.cartlist.length;i++){
+					shoppingNum +=this.cartlist[i].num;
+				};
+				return shoppingNum;
 			}
+			
+		},
+		methods:{
+			handleReduce(index){
+				console.log(index)
+				if(this.cartlist[index].count===0) return;
+				this.cartlist[index].num--;
+			},
+			handleAdd(index){
+				console.log(index)
+				this.cartlist[index].num++;
+			},
 		}
 	}
 </script>
 
 <style>
 	.commend-box{
-		height: 100px;
+		width: 100%;
+	}
+	.swiper-wrappe{
+		height: 100%;
+	}
+	.logo-img{
+		width: 120px;
+		height: 120px;
+		padding: 5px;
+		margin: auto;	
+	}
+	.food-name{
+		font-size: 14px;
+		color: #000000;
+		display: inline-block;
+		width: 100%;
+	}
+	.sales{
+		font-size: 12px;
+		color: #666666;
+		display: inline-block;
+		width: 100%;
+	}
+	.select-num>span{
+		display: inline-block;
+		float: left;
+	}
+	.shoppingCart{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background: rgba(61,61,63,.9);
+		height: 60px;
+		width: 100%;
+		box-sizing: border-box;
+		padding-left: 90px;
+	}
+	.cart-bg{
+		border: 6px solid #444444;
+		width: 60px;
+		height: 60px;
+		box-sizing: border-box;
+		border-radius: 50%;
+		position: absolute;
+		left: 20px;
+		top: -15px;
+		background: rgba(61,61,63,1);
+		
+	}
+	
+	.cart-bg-icon{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background:rgba(61,61,63,1) url(../../img/cart_off_icon.png)center no-repeat;
+		background-size: 80%;
+	}
+	.cart-bg-icon2{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background:rgba(61,61,63,1) url(../../img/cart_icon.png)center no-repeat;
+		background-size: 80%;
+	}
+	.cart-num{
+		color: #ffffff;
+		font-size: 12px;
+		font-weight: 600;
+		background: red;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		line-height: 20px;
+		display: inline-block;
+		border-radius: 50%;
+		position: absolute;
+		top: -10px;
+		right: -8px;
+	}
+	.succes-btn{
+		width: 120px;
+		height: 100%;
+		float: right;
+		line-height: 60px;
+		color: #ffffff;
+		background: #38ca73;
+	}
+	.off-btn{
+		width: 120px;
+		height: 100%;
+		float: right;
+		line-height: 60px;
+		color: #ffffff;
+		background: #535356;
 	}
 </style>

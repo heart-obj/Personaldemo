@@ -1,10 +1,11 @@
 <template>
-	<div>
-		333
-		<div>
+	<div class="content-box">
+		<div class="commend-box">
 			<commend></commend>
 		</div>
-		{{author}}
+		<div>
+			{{author}}
+		</div>
 	</div>
 </template>
 
@@ -30,5 +31,11 @@
 </script>
 
 <style>
+	.content-box{
+		width: 100%;
+	}
+	.commend-box{
+		width: 100%;
+	}
 	
 </style>
