@@ -14,6 +14,9 @@ const store = new Vuex.Store({
 		},
 		newMerchants(state,msg){
 			state.merchants=msg;
+		},
+		cartlist(state,msg){
+			state.cartlist=msg
 		}
 	}
 });

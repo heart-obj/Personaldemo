@@ -10,7 +10,7 @@
 	        		<span class="sales">月售{{val.sales}} 好评率{{val.rete}}</span>
 	        	</div>
 	        	<div>
-	        		<span style="font-size:20px;margin-left: 2px;color: #fb5300;">￥17.9</span>
+	        		<span style="font-size:20px;margin-left: 2px;color: #fb5300;">￥{{val.price}}</span>
 	        		<span v-if="val.num>0" class="el-icon-remove" style="color: #0085FF; margin-right: 2px;font-size: 20px;" @click="handleReduce(key)"></span>
         			<span v-if="val.num>0">{{val.num}}</span>
         			<span class="el-icon-circle-plus" style="color: #0085FF;margin-left: 2px;font-size: 20px;" @click="handleAdd(key)"></span>
@@ -21,13 +21,13 @@
 			<div class="cart-bg">
 				<div class="cart-bg-icon"></div>
 				<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
-				<span v-if="shoppingNum>0" class="cart-num">1</span>
+				<span v-if="shoppingNum>0" class="cart-num">{{shoppingNum}}</span>
 			</div>
 			<p style="text-align: left;width: auto;display: inline-block;float: left;">
-				<span style="color: #ffffff;font-size: 20px;">￥7</span>
+				<span style="color: #ffffff;font-size: 20px;">￥{{prices}}</span>
 				<del style="color: #999;font-size: 14px;">￥24</del>
 			</p>
-			<div class="off-btn">
+			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'">
 				结算
 			</div>
 		</div>
@@ -41,30 +41,33 @@
 		data(){
 			return {
 				name:"商家推荐",
-				shoppingNum:0,
-				cartlist:[
+				cartlist:this.$store.state.cartlist?this.$store.state.cartlist:[
 					{
 						goodsname:"农家炒肉双拼套餐",
 						sales:"11",
 						rete:"100%",
 						num:0,
+						price:17.9
 					},
 					{
-						goodsname:"农家炒肉双拼套餐",
+						goodsname:"农家青椒炒肉套餐",
 						sales:"11",
 						rete:"100%",
 						num:0,
+						price:24,
 					},
 					{
-						goodsname:"农家炒肉双拼套餐",
+						goodsname:"农家腊肉盖饭",
 						sales:"11",
 						rete:"100%",
 						num:0,
+						price:15
 					}
-				]
+				],
+				
 			}
 		},
-		mounted(){
+		mounted(){// 在模板渲染完成后或者el对应的html渲染后调用
 			new Swiper('.swiper-container',{
 				direction:"horizontal",
 				loop: true,
@@ -74,27 +77,39 @@
 				
 			})
 		},
-		computed:{
+		computed:{// 计算属性 ：复杂的逻辑计算可在此定义
 			author(){
 				return this.$store.state.author
 			},
 			shoppingNum(){
 				let shoppingNum=0;
-				for(var i=0;i<this.cartlist.length;i++){
-					shoppingNum +=this.cartlist[i].num;
+				const cartlist=this.cartlist;
+				for(var i=0;i<cartlist.length;i++){
+					shoppingNum +=cartlist[i].num;
 				};
 				return shoppingNum;
+			},
+			prices(){
+
+				var totalProce=0;
+				let cartlist=this.cartlist;
+				for(var i=0;i<cartlist.length;i++){
+					totalProce +=cartlist[i].num*cartlist[i].price;
+				};
+				return totalProce.toFixed(1)==0?0:totalProce.toFixed(1)
 			}
 			
 		},
-		methods:{
+		methods:{ // 事件定义
 			handleReduce(index){
 				console.log(index)
 				if(this.cartlist[index].count===0) return;
 				this.cartlist[index].num--;
+				this.$store.commit("cartlist",this.cartlist);
+				
 			},
 			handleAdd(index){
-				console.log(index)
+				this.$store.commit("cartlist",this.cartlist);
 				this.cartlist[index].num++;
 			},
 		}
