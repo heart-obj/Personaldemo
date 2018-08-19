@@ -18,15 +18,18 @@
 	        </div>
 		</div>
 		<div class="shoppingCart">
-			<div class="cart-bg">
-				<div class="cart-bg-icon"></div>
-				<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
-				<span v-if="shoppingNum>0" class="cart-num">{{shoppingNum}}</span>
+			<div @click="carttop()">
+				<div class="cart-bg">
+					<div class="cart-bg-icon"></div>
+					<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
+					<span v-if="shoppingNum>0" class="cart-num">{{shoppingNum}}</span>
+				</div>
+				<p style="text-align: left;width: auto;display: inline-block;float: left;">
+					<span style="color: #ffffff;font-size: 20px;">￥{{prices}}</span>
+					<del style="color: #999;font-size: 14px;">￥24</del>
+				</p>
 			</div>
-			<p style="text-align: left;width: auto;display: inline-block;float: left;">
-				<span style="color: #ffffff;font-size: 20px;">￥{{prices}}</span>
-				<del style="color: #999;font-size: 14px;">￥24</del>
-			</p>
+			
 			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'">
 				结算
 			</div>
@@ -41,7 +44,16 @@
 		data(){
 			return {
 				name:"商家推荐",
-				cartlist:this.$store.state.cartlist?this.$store.state.cartlist:[
+				cartlist:''
+				
+			}
+		},
+		created(){ // 初始化之前加载
+			var $this=this;
+			if(this.$store.state.cartlist){
+				$this.cartlist=this.$store.state.cartlist;
+			}else{
+				$this.cartlist=[
 					{
 						goodsname:"农家炒肉双拼套餐",
 						sales:"11",
@@ -63,9 +75,9 @@
 						num:0,
 						price:15
 					}
-				],
-				
+				]
 			}
+			
 		},
 		mounted(){// 在模板渲染完成后或者el对应的html渲染后调用
 			new Swiper('.swiper-container',{
@@ -112,6 +124,10 @@
 				this.$store.commit("cartlist",this.cartlist);
 				this.cartlist[index].num++;
 			},
+			carttop(){
+				let $this=this;
+				
+			}
 		}
 	}
 </script>
@@ -154,6 +170,7 @@
 		width: 100%;
 		box-sizing: border-box;
 		padding-left: 90px;
+		z-index: 111;
 	}
 	.cart-bg{
 		border: 6px solid #444444;
@@ -219,4 +236,5 @@
 		color: #ffffff;
 		background: #535356;
 	}
+	
 </style>
