@@ -141,8 +141,8 @@
 		width: 16px;
 		height: 16px;
 		position: absolute;
-		left: 8px;
-		top: 4px;
+		left: 10px;
+		top: 10px;
 		color: #ffffff;
 		font-size: 24px;
 		font-weight: 600;

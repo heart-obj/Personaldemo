@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import home from '@/components/indexpage';
 
 import merchant from "@/components/componentMerchants/merchant";
+import shoppingcart from '@/components/shoppingcart/shoppingcart';
 
 Vue.use(Router)
 
@@ -17,12 +18,16 @@ export default new Router({
     	name: 'home',
     	component: home,
     },
-    
     {
-		    	path:'/merchant',
-		    	name:'merchant',
-		    	component:merchant
-		    }
+    	path:'/merchant',
+    	name:'merchant',
+    	component:merchant
+    },
+    {
+    	path:'/shoppingcart',
+    	name:'shoppingcart',
+    	component:shoppingcart
+    }
     
   ]
 })

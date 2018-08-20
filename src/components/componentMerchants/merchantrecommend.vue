@@ -126,6 +126,7 @@
 			},
 			carttop(){
 				let $this=this;
+				$this.$router.push({path:'/shoppingcart'})
 				
 			}
 		}
