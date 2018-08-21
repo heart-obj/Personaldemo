@@ -16,14 +16,14 @@
 						</el-row>
 					</el-col>
 					<el-col :span="24">
-						<div class="goods-col" v-for="(val,key) in goodslist">
+						<div class="goods-col" v-for="(val,key) in goodslist" v-if="val.num>0">
 							<el-row>
 								<el-col :span="8" class="goods-name">{{val.goodsname}}</el-col>
 								<el-col :span="4" class="goods-num">{{val.num}}</el-col>
 								<el-col :span="6" class="goods-prices">{{val.price}}</el-col>
 								<el-col :span="6" class="operate-btn">
-									<i class="el-icon-remove change-btn" @click="addnum(key)"></i>
-									<i class="el-icon-circle-plus change-btn" @click="reducenum(key)"></i>
+									<i class="el-icon-remove change-btn" @click="reducenum(key)"></i>
+									<i class="el-icon-circle-plus change-btn" @click="addnum(key)"></i>
 								</el-col>
 							</el-row>
 						</div>
@@ -65,10 +65,17 @@
 				this.$router.push({path:'/merchant'})
 			},
 			addnum(index){
-				
+				let $this=this;
+				let goods=$this.$store.state.cartlist;
+				goods[index].num++
 			},
 			reducenum(index){
-				
+				let $this=this;
+				let goods=$this.$store.state.cartlist;
+				if(goods[index].num==0){
+					return
+				}
+				goods[index].num--
 			}
 		}
 	}
