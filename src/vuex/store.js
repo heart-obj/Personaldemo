@@ -17,6 +17,9 @@ const store = new Vuex.Store({
 		},
 		cartlist(state,msg){
 			state.cartlist=msg
+		},
+		order(state,msg){
+			state.order=msg
 		}
 	}
 });

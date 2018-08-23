@@ -30,9 +30,21 @@
 					</el-col>
 				</el-row>
 			</el-main>
-			<div class="payment_btn">
+			<div class="payment_btn" @click="dialogVisible = true">
 				付款
 			</div>
+			<el-dialog
+			  title="是否付款？"
+			  :visible.sync="dialogVisible"
+			  :close-on-click-modal=false
+			  width="80%"
+			  :before-close="closemodel">
+			  <span>金额：￥100</span>
+			  <span slot="footer" class="dialog-footer">
+			    <el-button @click="dialogVisible = false">取 消</el-button>
+			    <el-button type="primary" @click="payment()">确 定</el-button>
+			  </span>
+			</el-dialog>
 		</el-container>
 		
 	</div>
@@ -44,7 +56,8 @@
 		data(){
 			return{
 				name:"购物车",
-				goodslist:[]
+				goodslist:[],
+				dialogVisible:false
 			}
 		},
 		created(){
@@ -67,6 +80,7 @@
 			addnum(index){
 				let $this=this;
 				let goods=$this.$store.state.cartlist;
+				console.log($this.$store.state.order)
 				goods[index].num++
 			},
 			reducenum(index){
@@ -76,6 +90,14 @@
 					return
 				}
 				goods[index].num--
+			},
+			closemodel(){
+				this.dialogVisible=false;
+			},
+			payment(){
+				let $this=this;
+				this.$store.commit("order",$this.goodslist)
+				
 			}
 		}
 	}

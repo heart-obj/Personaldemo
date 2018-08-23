@@ -31,7 +31,7 @@
 				
 				<div class="activity-box">
 					<el-collapse >
-						<el-collapse-item name="1" >
+						<el-collapse-item name="1">
 							<template slot="title" >
 								<div class="activity-title" v-for="(val,key) in itme.restaurant.activities" v-if="key==0">
 									<span><span class="subtract-icon">{{val.icon_name}}</span>{{val.description}}</span>
