@@ -96,8 +96,8 @@
 			},
 			payment(){
 				let $this=this;
-				this.$store.commit("order",$this.goodslist)
-				
+				$this.$store.commit("order",$this.goodslist)
+				$this.dialogVisible=false;
 			}
 		}
 	}
