@@ -1,6 +1,6 @@
 <template>
 	<el-container>
-		<div :is="ismodel"></div>
+		<div :is="ismodel" :modelid="ismodel"></div>
 		<el-footer class="footer_box">
 			<el-menu class="el-menu-box" default-active="activeindex" @select="handleSelect">
 				<el-menu-item index="homepage" class="menu-list">

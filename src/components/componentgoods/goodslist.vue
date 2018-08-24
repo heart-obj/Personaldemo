@@ -56,7 +56,8 @@
 				name:"商品列表",
 				datalist:'',
 				offset:8,
-				loadof:false,// 判断上一次数据是否加载完成
+				loadof:false,// 判断上一次数据是否加载完成,
+				thismodel:"goodslist"
 			}
 		},
 		created(){// 初始化钩子函数
@@ -64,16 +65,15 @@
 		},
 		mounted(){
 			let $this=this;
-			
 			window.addEventListener("scroll",function(){
 				var loadoffset=$this.offset;
 				var scrollOffset=document.documentElement.scrollTop + window.innerHeight;// 获取滚动位置
 				var bodyHeight=document.body.offsetHeight;// 文档高度
-				if(scrollOffset>=bodyHeight&&$this.loadof==true){
-					console.log(111)
+				if(scrollOffset>=bodyHeight&&$this.loadof==true&&$this.thismodel=="goodslist"){
+					console.log($this.thismodel)
 					$this.offset=loadoffset+8;
-					$this.loadof=false;
 					$this.onloadGoods(loadoffset+8);
+					$this.loadof=false;
 				};
 			})
 		},

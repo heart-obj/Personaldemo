@@ -8,6 +8,7 @@ import axios from 'axios';
 import store from './vuex/store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'mescroll/src/mescroll.min.css'
 import 'swiper/dist/css/swiper.css';
 Vue.use(ElementUI,Vuex);
 Vue.config.productionTip = false;

@@ -55,7 +55,7 @@
 		name:"shoppingcart",
 		data(){
 			return{
-				name:"购物车",
+				name:"已选商品",
 				goodslist:'',
 				dialogVisible:false
 			}
@@ -63,7 +63,7 @@
 		created(){
 			let $this=this;
 			let goods=$this.$store.state.cartlist;
-			console.log(goods)
+			let sellerId=$this.$route.params.id;// 路由获取id
 			if(goods){
 				$this.goodslist=goods
 			}

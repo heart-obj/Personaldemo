@@ -1,6 +1,6 @@
 <template>
 	<div>
-		发现
+		{{modelid}}
 	</div>
 </template>
 
@@ -11,6 +11,9 @@
 			return {
 				name:"发现"
 			}
+		},
+		props:{
+			modelid:[String]
 		}
 	}
 </script>

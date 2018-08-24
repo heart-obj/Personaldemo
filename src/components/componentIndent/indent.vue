@@ -3,24 +3,26 @@
 		<el-header class="header-box">
 			<h3>{{name}}</h3>
 		</el-header>
-		<el-main>
+		<el-main style="padding-bottom: 60px;">
 			<el-row>
-				<el-col :span="24">
+				<el-col class="model-list" :span="24" v-for="(val,key) in datalist" v-bind:key="key">
 					<div class="container-box">
 						<img class="merchant-icon" src="https://fuss10.elemecdn.com/e/9e/0dcfc77c81c2df2bee953d0b78859jpeg.jpeg?imageMogr/format/webp/thumbnail/!64x64r/gravity/Center/crop/64x64/"/>
 						<div class="name-box">
-							<div class="merchant-name"><span>黄记小厨房</span><i class="el-icon-arrow-right"></i></div>
+							<div class="merchant-name"><span>{{val.msg.cartname}}</span><i class="el-icon-arrow-right"></i></div>
 							<div class="date">2018-08-20 11:05</div>
 						</div>
-						<span class="merchant-state">订单已到达</span>
+						<span class="merchant-state" style="float: right;">订单已到达</span>
+					</div>
+					<div class="container-box" style="line-height: 50px;padding-left:50px;box-sizing: border-box;">
+						<span style="float: left;">{{val.msg.datalist[0].goodsname}}等{{val.msg.datalist.length}}件商品</span>
+						<span style="float: right;">￥25.00</span>
 					</div>
 					<div class="container-box">
-						<span>青椒拱嘴等四件商品</span>
-						<span>￥25.00</span>
-					</div>
-					<div class="container-box">
-						<div>再来一单</div>
-						<div>评价</div>
+						<div style="float:right;">
+							<div style="padding:10px 20px;border:1px solid #2395ff;color: #2395ff;font-size: 14px;border-radius:4px;float: left;margin-right: 10px;">再来一单</div>
+						<div style="padding:10px 20px;border:1px solid #ff5339;color: #ff5339;font-size: 14px;border-radius:4px;float: right;">评价得金币</div>
+						</div>
 					</div>
 				</el-col>
 			</el-row>
@@ -33,11 +35,13 @@
 		name:"indent",
 		data(){
 			return {
-				name:"订单"
+				name:"订单",
+				datalist:"",
 			}
 		},
 		created(){// el挂载前调用函数
-			
+			console.log(this.$store.state.order)
+			this.datalist=this.$store.state.order;
 		},
 		methods:{// 事件定义
 			
@@ -67,8 +71,10 @@
 		width: auto;
 		display: inline-block;
 	}
+	
 	.container-box{
 		width: 100%;
+		height: 50px;
 	}
 	.container-box>div{
 		display: inline-block;
@@ -89,7 +95,7 @@
 	}
 	.merchant-name>span{
 		display: inline-block;
-		width: 100px;
+		max-width: 140px;
 		white-space: nowrap;
 		overflow:hidden;
 		text-overflow: ellipsis;

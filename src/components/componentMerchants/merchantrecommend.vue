@@ -3,7 +3,7 @@
 	<div class="commend-box swiper-container">
 		<div style="font-size: 26px;color: #000000;">商家推荐</div>
 		<div class="swiper-wrapper">
-	        <div v-for="(val,key) in cartlist" class="swiper-slide" v-bind:key="key">
+	        <div v-for="(val,key) in cartlist.datalist" class="swiper-slide" v-bind:key="key">
 	        	<div class="logo-img"><img src="//fuss10.elemecdn.com/0/ef/c440d90e4af8833e6abc5a0a1bf2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/" alt="" width="100%" height="100%" /></div>
 	        	<div>
 	        		<span class="food-name">{{val.goodsname}}</span>
@@ -53,29 +53,30 @@
 			if(this.$store.state.cartlist){
 				$this.cartlist=this.$store.state.cartlist;
 			}else{
-				$this.cartlist=[
-					{
-						goodsname:"农家炒肉双拼套餐",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:17.9
-					},
-					{
-						goodsname:"农家青椒炒肉套餐",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:24,
-					},
-					{
-						goodsname:"农家腊肉盖饭",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:15
+				$this.cartlist={
+						cartname:"乡村基（枫丹店）",
+						datalist:[{
+							goodsname:"农家炒肉双拼套餐",
+							sales:"11",
+							rete:"100%",
+							num:0,
+							price:17.9
+						},
+						{
+							goodsname:"农家青椒炒肉套餐",
+							sales:"11",
+							rete:"100%",
+							num:0,
+							price:24,
+						},
+						{
+							goodsname:"农家腊肉盖饭",
+							sales:"11",
+							rete:"100%",
+							num:0,
+							price:15
+						}]
 					}
-				]
 			}
 			
 		},
@@ -96,8 +97,8 @@
 			shoppingNum(){
 				let shoppingNum=0;
 				const cartlist=this.cartlist;
-				for(var i=0;i<cartlist.length;i++){
-					shoppingNum +=cartlist[i].num;
+				for(var i=0;i<cartlist.datalist.length;i++){
+					shoppingNum +=cartlist.datalist[i].num;
 				};
 				return shoppingNum;
 			},
@@ -105,8 +106,8 @@
 
 				var totalProce=0;
 				let cartlist=this.cartlist;
-				for(var i=0;i<cartlist.length;i++){
-					totalProce +=cartlist[i].num*cartlist[i].price;
+				for(var i=0;i<cartlist.datalist.length;i++){
+					totalProce +=cartlist.datalist[i].num*cartlist.datalist[i].price;
 				};
 				return totalProce.toFixed(1)==0?0:totalProce.toFixed(1)
 			}
@@ -115,18 +116,23 @@
 		methods:{ // 事件定义
 			handleReduce(index){
 				console.log(index)
-				if(this.cartlist[index].count===0) return;
-				this.cartlist[index].num--;
+				if(this.cartlist.datalist[index].count===0) return;
+				this.cartlist.datalist[index].num--;
 				this.$store.commit("cartlist",this.cartlist);
 				
 			},
 			handleAdd(index){
 				this.$store.commit("cartlist",this.cartlist);
-				this.cartlist[index].num++;
+				this.cartlist.datalist[index].num++;
 			},
 			carttop(){
 				let $this=this;
-				$this.$router.push({path:'/shoppingcart'})
+				$this.$router.push({
+					name:'selectgoods',
+					params:{
+						id:"15616513"
+					}
+				})
 				
 			}
 		}

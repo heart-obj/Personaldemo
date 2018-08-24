@@ -7,6 +7,7 @@ const store = new Vuex.Store({
 	state: {
 		author:'111',
 		merchants:"menus",
+		order:[]
 	},
 	mutations: {
 		newAuthor(state,msg){
@@ -19,7 +20,7 @@ const store = new Vuex.Store({
 			state.cartlist=msg
 		},
 		order(state,msg){
-			state.order=msg
+			state.order.push({msg})
 		}
 	}
 });

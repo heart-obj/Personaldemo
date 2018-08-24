@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import home from '@/components/indexpage';
 
 import merchant from "@/components/componentMerchants/merchant";
+import selectgoods from '@/components/componentMerchants/selectgoods';
 import shoppingcart from '@/components/shoppingcart/shoppingcart';
+
 
 Vue.use(Router)
 
@@ -27,6 +29,11 @@ export default new Router({
     	path:'/shoppingcart',
     	name:'shoppingcart',
     	component:shoppingcart
+    },
+    {
+    	path:'/selectgoods',
+    	name:'selectgoods',
+    	component:selectgoods
     }
     
   ]
