@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="index_c">
 		<el-header class="box_h">
 			<div class="index_h_t">饿了么</div>
 			<el-row class="index_h_d">
@@ -22,7 +22,7 @@
 			<el-button class="check_btn" type="primary" icon="el-icon-search">搜索饿了么商家、商品名称</el-button>
 		</div>
 		<el-main class="content_box">
-			<componentgoods></componentgoods>
+			<componentgoods loadType="modelid"></componentgoods>
 		</el-main>
 		
 	</div>
@@ -42,6 +42,9 @@
 		},
 		components:{
 			componentgoods:componentgoods
+		},
+		props:{
+			modelid:[String]
 		},
 		mounted(){
 			this.weather();

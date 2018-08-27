@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<componentindex></componentindex>
+		
 	</div>
 </template>
 
@@ -20,5 +21,5 @@
 </script>
 
 <style scoped>
-
+	
 </style>

@@ -54,18 +54,21 @@
 		data(){
 			return {
 				name:"商品列表",
-				datalist:'',
+				datalist:[],
 				offset:8,
 				loadof:false,// 判断上一次数据是否加载完成,
 				thismodel:"goodslist"
 			}
 		},
-		created(){// 初始化钩子函数
-			this.loadgoods()
+		created(){// 初始化钩子函数(在el为挂载之前调用)
+			this.onloadGoods(0)
 		},
-		mounted(){
-			let $this=this;
-			window.addEventListener("scroll",function(){
+		mounted(){// 初始化调用（在el挂载完成后调用）
+			window.addEventListener("scroll",this.scrollLoad)
+		},
+		methods:{ // 函数方法定义（复杂的逻辑可在此操作）
+			scrollLoad(){ // 上拉加载
+				let $this=this;
 				var loadoffset=$this.offset;
 				var scrollOffset=document.documentElement.scrollTop + window.innerHeight;// 获取滚动位置
 				var bodyHeight=document.body.offsetHeight;// 文档高度
@@ -75,31 +78,7 @@
 					$this.onloadGoods(loadoffset+8);
 					$this.loadof=false;
 				};
-			})
-		},
-		methods:{
-			loadgoods(){
-				let $this=this;
-				$this.$http({
-					method:"get",
-					url:"api/b/restapi/shopping/v3/restaurants",
-					params:{
-						latitude:"30.573095",
-						longitude:"104.066143",
-						terminal:"h5",
-						offset:"0",
-						limit:"8",
-						extras: "activities",
-						extra_filters: "home",
-						rank_id:"" 
-					}
-				}).then((response)=>{
-					console.log(response.data.items);
-					$this.datalist=response.data.items;
-					$this.loadof=true;
-				}).catch((response)=>{
-					console.log(response)
-				})
+				
 			},
 			onloadGoods(offset){
 				let $this=this;
@@ -117,13 +96,12 @@
 						rank_id:"" 
 					}
 				}).then((response)=>{
-					if($this.loadof==false){
-						console.log(response.data.items);
-						for(var i=0;i<response.data.items.length;i++){
-							$this.datalist.push(response.data.items[i])	
-						};
-						$this.loadof=true;
+					console.log(response.data.items);
+					for(var i=0;i<response.data.items.length;i++){
+						$this.datalist.push(response.data.items[i])	
 					}
+					$this.loadof=true;
+					
 					
 				}).catch((response)=>{
 					console.log(response)
@@ -133,6 +111,9 @@
 				console.log(222)
 				this.$router.push({path:'/merchant'})
 			}
+		},
+		destroyed(){// 在离开此组件是调用
+			window.removeEventListener("scroll",this.scrollLoad)
 		}
 	}
 	

@@ -16,8 +16,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-preset-es2015": "^6.24.1",
+    "better-scroll": "^1.12.6",
     "element-ui": "^2.4.5",
-    "mescroll": "0.0.3",
     "npm": "^6.4.0",
     "swiper": "^4.3.5",
     "to": "^0.2.9",

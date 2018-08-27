@@ -39,13 +39,13 @@
 				
 			}
 		},
-		components:{
+		components:{// 子组件
 			homepage:homepage,
 			found:found,
 			indent:indent,
 			personal:personal
 		},
-		methods: {
+		methods: { // 用于定义方法函数（复杂的逻辑可在此运算）
 	      	handleSelect(key, keyPath) {
 	        	this.ismodel=key;
 	      	}
