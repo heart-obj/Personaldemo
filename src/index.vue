@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<router-view></router-view>
-		<div class="shoppingCart-btn" @click="shoppingCart"></div>
+		<div class="shoppingCart-btn" @click="shoppingCart" v-show="showShopping()"></div>
 	</div>
 </template>
 
@@ -14,8 +14,14 @@
 		},
 		methods:{
 			shoppingCart(){
-				this.$router.push({path:'/shoppingcart'})
+				this.$router.push({path:'/shoppingcart'});
+				this.$store.commit("showShopping",false)
+			},
+			showShopping(){
+				console.log(this.$store.state.showShopping)
+				return this.$store.state.showShopping;
 			}
+			
 		}
 	}
 </script>
@@ -38,7 +44,7 @@
 		height: 40px;
 		background: rgba(255, 255, 255, .6) url(img/cart_off_icon.png)center no-repeat;
 		background-size: 50% 50%;
-		border: 2px solid #666666;
+		border: 2px solid #E6E6E6;
 		border-radius: 50%;
 		position: fixed;
 		bottom: 100px;

@@ -18,7 +18,7 @@
 	        </div>
 		</div>
 		<div class="shoppingCart">
-			<div @click="carttop()">
+			<div>
 				<div class="cart-bg">
 					<div class="cart-bg-icon"></div>
 					<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
@@ -30,8 +30,8 @@
 				</p>
 			</div>
 			
-			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'">
-				结算
+			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'" @click="carttop">
+				查看已选商品
 			</div>
 		</div>
 	</div>

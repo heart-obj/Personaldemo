@@ -11,7 +11,8 @@
 			return {
 				name:"个人中心"
 			}
-		}
+		},
+		
 	}
 </script>
 

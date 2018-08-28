@@ -31,15 +31,15 @@
 				</el-row>
 			</el-main>
 			<div class="payment_btn" @click="dialogVisible = true">
-				付款
+				加入购物车
 			</div>
 			<el-dialog
-			  title="是否付款？"
+			  title=""
 			  :visible.sync="dialogVisible"
 			  :close-on-click-modal=false
 			  width="80%"
 			  :before-close="closemodel">
-			  <span>金额：￥100</span>
+			  <span>是否加入购物车？</span>
 			  <span slot="footer" class="dialog-footer">
 			    <el-button @click="dialogVisible = false">取 消</el-button>
 			    <el-button type="primary" @click="payment()">确 定</el-button>
@@ -60,7 +60,7 @@
 				dialogVisible:false
 			}
 		},
-		created(){
+		created(){// el挂载之前调用
 			let $this=this;
 			let goods=$this.$store.state.cartlist;
 			let sellerId=$this.$route.params.id;// 路由获取id
@@ -69,7 +69,7 @@
 			}
 			
 		},
-		methods:{
+		methods:{ // 定义方法（逻辑在此处理）
 			tomerchants(){
 				this.$router.push({path:'/merchant'})
 			},
@@ -92,7 +92,17 @@
 			},
 			payment(){
 				let $this=this;
-				$this.$store.commit("order",$this.goodslist)
+				$this.$store.commit("cartlist",null)
+				let commitDatalist=[];
+				for(var i=0;i<$this.goodslist.datalist.length;i++){
+					if($this.goodslist.datalist[i].num>0){
+						commitDatalist.push($this.goodslist.datalist[i]);
+					}
+				};
+				$this.$store.commit("addGoods",{
+					cartname:$this.goodslist.cartname,
+					datalist:commitDatalist
+				})
 				$this.dialogVisible=false;
 				this.$router.push({path:'/home'})
 			}
