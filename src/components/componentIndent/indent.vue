@@ -54,6 +54,10 @@
 		background-image: -webkit-gradient(linear, left top, right top, from(#0af), to(#0085ff));
 		color: #ffffff;
 		height: 60px;
+		position: sticky;
+		left: 0;
+		top: 0;
+		z-index: 111;
 	}
 	.to-index-box{
 		float: left;

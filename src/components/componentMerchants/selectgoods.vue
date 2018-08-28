@@ -92,7 +92,7 @@
 			},
 			payment(){
 				let $this=this;
-				$this.$store.commit("cartlist",null)
+				$this.$store.commit("cartlist",null);
 				let commitDatalist=[];
 				for(var i=0;i<$this.goodslist.datalist.length;i++){
 					if($this.goodslist.datalist[i].num>0){
@@ -102,9 +102,9 @@
 				$this.$store.commit("addGoods",{
 					cartname:$this.goodslist.cartname,
 					datalist:commitDatalist
-				})
+				});
+				$this.goodslist=[]
 				$this.dialogVisible=false;
-				this.$router.push({path:'/home'})
 			}
 		}
 	}

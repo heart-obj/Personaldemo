@@ -6,7 +6,7 @@
 				<h3>{{name}}</h3>
 			</el-header>
 			<el-main class="goods-box">
-				<el-row>
+				<el-row v-if="goodslist.length>0">
 					<el-col :span="24" v-for="(val,key) in goodslist" v-bind:key="key">
 						<div style="height: 40px;line-height: 40px;border-bottom: 1px solid #e0e0e0;"><span style="float: left;font-size: 20px;">{{val.msg.cartname}}<i class="el-icon-arrow-right"></i></span></div>
 						<div class="goodslist-box" v-for="(list,key) in val.msg.datalist" v-bind:key="key">
@@ -24,14 +24,18 @@
 							<span>
 								合计：{{price(key)}}元
 							</span>
-							<div class="delet-btn">删除</div>
+							<div class="delet-btn" @click="delGoods(key)">删除</div>
 							<div class="submit-btn" @click="goodsindex(key,price(key))">付款</div>
 						</div>
 						
 					</el-col>
 					
 				</el-row>
+				<el-row v-else style="font-size: 50px;font-weight:600;color: #e3e3e3;padding-top: 50px;">
+					购物车为空
+				</el-row>
 			</el-main>
+			
 			<el-dialog
 			  title="是否付款？"
 			  :visible.sync="dialogVisible"
@@ -55,7 +59,7 @@
 		data(){
 			return{
 				name:"购物车",
-				goodslist:'',
+				goodslist:[],
 				dialogVisible:false,
 				submitPrice:0,
 				index:""
@@ -63,9 +67,12 @@
 		},
 		created(){// el挂载之前调用
 			let $this=this;
+			console.log($this.$store.state.addGoods)
 			let goods=$this.$store.state.addGoods;
 			if(goods){
-				$this.goodslist=goods
+				for(var i=0;i<goods.length;i++){
+					$this.goodslist.push(goods[i])
+				}
 			}
 			
 		},
@@ -95,12 +102,17 @@
 				
 			},
 			payment(index){
-				console.log(index)
 				let $this=this;
-				$this.$store.commit("order",$this.goodslist[index].msg)
-				
+				$this.$store.commit("order",$this.goodslist[index].msg);
+				$this.goodslist.splice(index,1);
+				$this.$store.state.addGoods.splice(index,1)
 				$this.dialogVisible=false;
 			},
+			delGoods(index){
+				let $this=this;
+				$this.goodslist.splice(index,1);
+				$this.$store.state.addGoods.splice(index,1)
+			}
 			
 		}
 	}
