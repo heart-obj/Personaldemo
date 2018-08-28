@@ -1,25 +1,79 @@
 <template>
 	<div>
-		<componentindex></componentindex>
+		<el-container>
+			<div :is="ismodel" :modelid="ismodel"></div>
+			<el-footer class="footer_box">
+				<el-menu class="el-menu-box" default-active="activeindex" @select="handleSelect">
+					<el-menu-item index="homepage" class="menu-list">
+						首页
+					</el-menu-item>
+					<el-menu-item index="found" class="menu-list">
+						发现
+					</el-menu-item>
+					<el-menu-item index="indent" class="menu-list">
+						订单
+					</el-menu-item>
+					<el-menu-item index="personal" class="menu-list">
+						我的
+					</el-menu-item>
+				</el-menu>
+			</el-footer>
+		</el-container>
 		
 	</div>
 </template>
 
 <script>
-	import componentindex from "./componentindex";
+	import homepage from './componenHomepage/homepage';
+	import found from "./componentFound/found";
+	import indent from "./componentIndent/indent";
+	import personal from "./componentPersonal/personal";
 	export default{
-		name:"index",
+		name:'componentindex',
 		data(){
-			return {
-				name:"首页"
+			return{
+				name:'componentindex',
+				activeindex:"1",
+				homepage:"homepage",
+				found:"found",
+				indent:"indent",
+				personal:"personal",
+				ismodel:"homepage"
+				
 			}
 		},
-		components:{
-			componentindex:componentindex
-		}
-	}
+		components:{// 子组件
+			homepage:homepage,
+			found:found,
+			indent:indent,
+			personal:personal
+		},
+		methods: { // 用于定义方法函数（复杂的逻辑可在此运算）
+	      	handleSelect(key, keyPath) {
+	        	this.ismodel=key;
+	      	}
+	    }
+	} 
 </script>
 
 <style scoped>
-	
+	.footer_box{
+		width: 100%;
+		height: 60px;
+		position: fixed;
+		background: #ffffff;
+		bottom: 0;
+		left: 0;
+		box-sizing: border-box;
+		box-shadow:0 0 12px rgba(0,0,0,.5);
+		z-index: 9999;
+	}
+	.el-menu-box{
+		border: none;
+	}
+	.menu-list{
+		width: 25%;
+		height: 100%;
+		float: left;
+	}
 </style>
