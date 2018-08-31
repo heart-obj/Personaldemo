@@ -117,6 +117,9 @@
 </script>
 
 <style scoped>
+	.merchant-box{
+		padding-bottom: 60px;
+	}
 	.header-boxs{
 		padding: 0;
 		height: auto !important;

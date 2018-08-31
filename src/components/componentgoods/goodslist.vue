@@ -29,7 +29,7 @@
 					</div>
 				</div>
 				
-				<div class="activity-box">
+				<div class="activity-box" v-if="itme.restaurant.activities.length>0">
 					<el-collapse >
 						<el-collapse-item name="1">
 							<template slot="title" >
