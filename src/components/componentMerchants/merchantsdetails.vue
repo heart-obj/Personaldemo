@@ -18,6 +18,9 @@
 			author(){
 				return this.$store.state.author
 			}
+		},
+		methods:{// 定义事件
+			
 		}
 	}
 </script>
