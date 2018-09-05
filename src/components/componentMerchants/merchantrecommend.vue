@@ -50,33 +50,39 @@
 		},
 		created(){ // 初始化之前加载
 			var $this=this;
-			if(this.$store.state.cartlist){
-				$this.cartlist=this.$store.state.cartlist;
+			if($this.$store.state.cartlist.length>0){
+				console.log($this.$store.state.cartlist)
+				for(let i=0;i<$this.$store.state.cartlist.length;i++){
+					if($this.$store.state.cartlist[i].cartname == "乡村基（枫丹店）"){
+						$this.cartlist=$this.$store.state.cartlist[i];
+					}
+				}
+				
 			}else{
 				$this.cartlist={
-						cartname:"乡村基（枫丹店）",
-						datalist:[{
-							goodsname:"农家炒肉双拼套餐",
-							sales:"11",
-							rete:"100%",
-							num:0,
-							price:17.9
-						},
-						{
-							goodsname:"农家青椒炒肉套餐",
-							sales:"11",
-							rete:"100%",
-							num:0,
-							price:24,
-						},
-						{
-							goodsname:"农家腊肉盖饭",
-							sales:"11",
-							rete:"100%",
-							num:0,
-							price:15
-						}]
-					}
+					cartname:"乡村基（枫丹店）",
+					datalist:[{
+						goodsname:"农家炒肉双拼套餐",
+						sales:"11",
+						rete:"100%",
+						num:0,
+						price:17.9
+					},
+					{
+						goodsname:"农家青椒炒肉套餐",
+						sales:"11",
+						rete:"100%",
+						num:0,
+						price:24,
+					},
+					{
+						goodsname:"农家腊肉盖饭",
+						sales:"11",
+						rete:"100%",
+						num:0,
+						price:15
+					}]
+				}
 			}
 			
 		},
@@ -95,11 +101,19 @@
 				return this.$store.state.author
 			},
 			shoppingNum(){
+				var $this=this;
 				let shoppingNum=0;
-				const cartlist=this.cartlist;
-				for(var i=0;i<cartlist.datalist.length;i++){
-					shoppingNum +=cartlist.datalist[i].num;
-				};
+				const cartlist=$this.$store.state.cartlist;
+				console.log(cartlist)
+				if(shoppingNum>0){
+					shoppingNum=0;
+				}
+				for(let i=0;i<cartlist.length;i++){
+					for(let n=0;n<cartlist[i].datalist.length;n++){
+						shoppingNum +=cartlist[i].datalist[n].num;
+					};
+				}
+				
 				return shoppingNum;
 			},
 			prices(){

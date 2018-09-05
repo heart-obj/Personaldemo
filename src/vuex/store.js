@@ -9,6 +9,7 @@ const store = new Vuex.Store({
 		merchants:"menus",
 		order:[],
 		addGoods:[],
+		cartlist:[],
 		showShopping:true
 	},
 	mutations: {
@@ -19,7 +20,9 @@ const store = new Vuex.Store({
 			state.merchants=msg;
 		},
 		cartlist(state,msg){ // 选中物品数据
-			state.cartlist=msg
+			console.log(msg)
+			state.cartlist.push(msg)
+			
 		},
 		order(state,msg){// 订单数据
 			state.order.push({msg})
