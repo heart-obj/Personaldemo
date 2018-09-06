@@ -86,6 +86,7 @@
 			}
 		},
 		methods:{
+			
 			handclick(){
 				this.$router.push({path:'/home'})
 			},

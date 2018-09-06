@@ -1,0 +1,335 @@
+[
+	{
+		"storename": "饭戒",
+		"storeid": "1061",
+		"goods": [
+			{
+				"category": "推荐",
+				"recommend": 1,
+				"goodslist": [
+					{
+						"goodsname": "唐僧的佛系便当 咖喱牛肉套餐",
+						"sales": "24",
+						"rete": "0",
+						"price": "38",
+						"num": 0,
+						"remark": "生活总是千辛万苦百般折磨，百练方能成钢",
+						"img":"//fuss10.elemecdn.com/f/27/b633885a0547425deac9ded301777png.png?imageMogr/format/webp/thumbnail/240x/"
+					}, {
+						"goodsname": "悟能的沙河阻隔 土豆牛肉套餐",
+						"sales": "25",
+						"rete": "100",
+						"price": "38",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/8/d6/55bbd24c277328390441120dadc7bpng.png?imageMogr/format/webp/thumbnail/240x/"
+					}, {
+						"goodsname": "超火辣子鸡套餐",
+						"sales": "24",
+						"rete": "0",
+						"price": "38",
+						"num": 0,
+						"recommend": 1,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/d/eb/9e4a738d04d7ec3ea88b237eb3a85png.png?imageMogr/format/webp/thumbnail/240x/"
+					}, {
+						"goodsname": "爆炒黄牛肉套餐",
+						"sales": "43",
+						"rete": "100",
+						"price": "38",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/c/4e/ebd8fd9b242f8eaeb8c8db98bd8abjpeg.jpeg?imageMogr/format/webp/thumbnail/240x/"
+					}
+				]
+			}, {
+				"category": "热销",
+				"recommend": 0,
+				"goodslist": [
+					{
+						"goodsname": "超级下饭牛肉辣酱",
+						"sales": "368",
+						"rete": "97",
+						"price": "3",
+						"num": 0,
+						"remark": "那个干掉一碗白米饭的牛肉酱",
+						"img":"//fuss10.elemecdn.com/2/99/8c310704db64a58503e8df4316953jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/s"
+					}, {
+						"goodsname": "唐僧的佛系便当 咖喱牛肉套餐",
+						"sales": "340",
+						"rete": "97",
+						"price": "38",
+						"num": 0,
+						"remark": "生活总是千辛万苦百般折磨，百练方能成钢",
+						"img":"//fuss10.elemecdn.com/d/11/87a2762a9639e1764d63bfc0c4fddjpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "来自星星的藤椒大鸡腿",
+						"sales": "192",
+						"rete": "96",
+						"price": "4.8",
+						"num": 0,
+						"remark": "酒肉穿肠过，佛主心中留",
+						"img":"//fuss10.elemecdn.com/d/11/87a2762a9639e1764d63bfc0c4fddjpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "土豆牛肉盖饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "22",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/8/0c/03bdd7e4d69c9423a619d14be025djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "土豆牛肉盖饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "22",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/8/0c/03bdd7e4d69c9423a619d14be025djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "土豆牛肉盖饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "22",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/8/0c/03bdd7e4d69c9423a619d14be025djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "土豆牛肉盖饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "22",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/8/0c/03bdd7e4d69c9423a619d14be025djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "土豆牛肉盖饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "22",
+						"num": 0,
+						"remark": "你知道牛肉怎样才好吃吗？有人喂你吃",
+						"img":"//fuss10.elemecdn.com/8/0c/03bdd7e4d69c9423a619d14be025djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}
+				]
+			}, {
+				"category": "米饭",
+				"recommend": 0,
+				"goodslist": [
+					{
+						"goodsname": "白米饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "2",
+						"num": 0,
+						"remark": "白花花的米饭你不喜欢吗？",
+						"img":"//fuss10.elemecdn.com/2/2e/47f0791fe4ba967df399296188fa3jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "稀饭",
+						"sales": "243",
+						"rete": "98",
+						"price": "2",
+						"num": 0,
+						"remark": "金灿灿的稀饭你不喜欢吗？",
+						"img":"//fuss10.elemecdn.com/9/9c/36f84de7c2b04166be1f41f372669jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}
+				]
+			}, {
+				"category": "素菜",
+				"recommend": 0,
+				"goodslist": [
+					{
+						"goodsname": "炝小白菜",
+						"sales": "243",
+						"rete": "98",
+						"price": "10",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/2/24/1a62e6f6fb2ed7a74075b57406862jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "炝凤尾",
+						"sales": "43",
+						"rete": "98",
+						"price": "12",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/8/d3/ac37791584dca249f1fceae86036djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "炝莲白",
+						"sales": "40",
+						"rete": "98",
+						"price": "10",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/b/ca/d79c25d02a7f6bbdb8792957a57ddjpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "酸辣土豆丝",
+						"sales": "52",
+						"rete": "98",
+						"price": "10",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/b/81/08ff71e8b92f709a9ea99b3e0d6b8jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "鱼香肉丝",
+						"sales": "52",
+						"rete": "98",
+						"price": "20",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/d/3a/eb6ddd89ee52e3a4eebbfb9d3bf79jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "干煸四季豆",
+						"sales": "52",
+						"rete": "98",
+						"price": "15",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/8/87/d22d43e5aca0dd2cf3c3cb52556f2jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}
+				]
+			}, {
+				"category": "荤菜",
+				"recommend": 0,
+				"goodslist": [
+					{
+						"goodsname": "小尖椒回锅",
+						"sales": "143",
+						"rete": "98",
+						"price": "20",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/8/22/f62f9871b1ffebdf2a5282b91a1d5jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "鱼香肉丝",
+						"sales": "93",
+						"rete": "97",
+						"price": "20",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/d/3a/eb6ddd89ee52e3a4eebbfb9d3bf79jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "烂肉豆花",
+						"sales": "40",
+						"rete": "98",
+						"price": "16",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/5/25/ab800ff93c7d6d429d886448e80fejpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "火爆腰花",
+						"sales": "52",
+						"rete": "98",
+						"price": "25",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/b/56/0c1cba6c3f35473b0d61a9d091f9ejpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "青笋烧鸡",
+						"sales": "52",
+						"rete": "98",
+						"price": "35",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/a/1e/562e01a36611710045b5788fec770jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "青笋烧肥肠",
+						"sales": "52",
+						"rete": "98",
+						"price": "35",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/2/2b/a2251ee0104f54d67991b391c24afjpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "青笋烧肘子",
+						"sales": "52",
+						"rete": "98",
+						"price": "35",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/2/c5/25e5a22bab8e3f89db37b241db2e0jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "双椒兔丁",
+						"sales": "52",
+						"rete": "98",
+						"price": "35",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/c/54/8319aebed2f1f539beee4a656abfajpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}
+				]
+			}, {
+				"category": "饮料",
+				"recommend": 0,
+				"goodslist": [
+					{
+						"goodsname": "王老吉",
+						"sales": "14",
+						"rete": "98",
+						"price": "5",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/3/4f/8916a2350c206022626512e1e4cffjpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "小瓶唯怡",
+						"sales": "93",
+						"rete": "100",
+						"price": "6",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/6/89/767c62ed216ba966e7e7b0616df87jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "雪碧",
+						"sales": "18",
+						"rete": "98",
+						"price": "4",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/4/12/faa16ddad6271778e535f3b58817ejpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}, {
+						"goodsname": "农夫山泉",
+						"sales": "52",
+						"rete": "98",
+						"price": "2.5",
+						"num": 0,
+						"remark": "",
+						"img":"//fuss10.elemecdn.com/5/e3/3d26f35590f9c5e9b41f9ad405624jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"
+					}
+				]
+			}
+		]
+	}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,13 +8,13 @@
 				<el-col :span="6">
 					<div class="container-left">
 						<ul>
-							<li v-for="(val,key) in category" :class="activeB==key?active:false" v-bind:key="key" @click="selectLi(key)">
+							<li v-for="(val,key) in category.goods" v-if="key>0" :class="activeB==key?active:false" v-bind:key="key" @click="selectLi(key)">
 								<el-row>
 									<el-col :span="4">
 											<img src="//fuss10.elemecdn.com/7/59/9165195495ce2960ade8a326e8e81png.png?imageMogr/format/webp/thumbnail/26x/" alt="" width="16px" height="16px" style="float: left;" />							
 									</el-col>
 									<el-col :span="20" style="text-align: left;padding-left: 8px;word-wrap: break-word;">
-										{{val.categoryname}}
+										{{val.category}}
 									</el-col>
 								</el-row>
 							</li>
@@ -23,11 +23,11 @@
 				</el-col>
 				<el-col :span="18">
 					<ul class="container-right">
-						<li class="goodslist" v-for="(val,key) in category[activeB].dataArr" v-bind:key="key">
-							<img src="//fuss10.elemecdn.com/9/03/5229bdd71cfe5165fe6cef7b3a83djpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/" alt="" width="100px" height="100px"/>
+						<li class="goodslist" v-for="(val,key) in category.goods[activeB].goodslist" v-bind:key="key">
+							<img v-bind:src="val.img" alt="" width="100px" height="100px"/>
 							<div class="goods-detail">
-								<div style="font-size: 16px;font-weight: 600;">{{val.goodsname}}</div>
-								<div>语录：你的胃口由我负责</div>
+								<div style="font-size: 16px;font-weight: 600;width: 80%;overflow: hidden;overflow-wrap: break-word;">{{val.goodsname}}</div>
+								<div>{{val.remark}}</div>
 								<div>
 									<span>月售{{val.sales}}份</span>
 									<span>好评率{{val.rete}}%</span>
@@ -52,6 +52,23 @@
 			
 			
 		</div>
+		<div class="shoppingCart">
+			<div>
+				<div class="cart-bg">
+					<div class="cart-bg-icon"></div>
+					<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
+					<span v-if="shoppingNum>0" class="cart-num">{{shoppingNum}}</span>
+				</div>
+				<p style="text-align: left;width: auto;display: inline-block;float: left;">
+					<span style="color: #ffffff;font-size: 20px;">￥{{prices}}</span>
+					<del style="color: #999;font-size: 14px;">￥24</del>
+				</p>
+			</div>
+			
+			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'" @click="carttop">
+				查看已选商品
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -63,105 +80,25 @@
 			return {
 				name:"商品列表",
 				active:"active-li",
-				activeB:0,
-				category:[{
-					categoryname:"热销",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					},{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					},{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					},{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					},{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					}]
-				},{
-					categoryname:"米饭",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"大米饭",
-						sales:"100",
-						rete:"100",
-						price:"2",
-						num:0
-					}]
-				},{
-					categoryname:"素菜",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"小白菜",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					}]
-				},{
-					categoryname:"荤菜",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"小炒肉",
-						sales:"100",
-						rete:"95",
-						price:"20",
-						num:0
-					}]
-				},{
-					categoryname:"饮料",
-					dataArr:[{
-						goodsname:"脉动",
-						sales:"100",
-						rete:"95",
-						price:"5",
-						num:0
-					}]
-				},{
-					categoryname:"小吃",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"花生米",
-						sales:"100",
-						rete:"95",
-						price:"6",
-						num:0
-					}]
-				},{
-					categoryname:"优惠",
-					cartname:"乡村基（枫丹店）",
-					dataArr:[{
-						goodsname:"花生米",
-						sales:"100",
-						rete:"95",
-						price:"6",
-						discounts:"3",
-						num:0
-					}]
-				}]
+				activeB:1,
+				category:null
 			}
 		},
 //		props:['clickname'],
+		beforeCreate(){
+			const $this=this;
+			$this.$http({
+				methods:"get",
+				url:"static/data/foodsArr.json",
+			}).then((response)=>{
+				for(let i=0;i<response.data.length;i++){
+					if(response.data[i].storeid=="1061"){
+						$this.category=response.data[i];
+					}
+				};
+				console.log($this.category)
+			})
+		},
 		components:{
 			commend:commend
 		},
@@ -169,14 +106,43 @@
 			author(){
 				return this.$store.state.author
 			},
+			prices(){
+				return 0
+			}
 		},
 		methods:{
+			shoppingNum(){
+//				var $this=this;
+//				let shoppingNum=0;
+//				const cartlist=$this.$store.state.cartlist;
+//				console.log(cartlist)
+//				if(shoppingNum>0){
+//					shoppingNum=0;
+//				}
+//				for(let i=0;i<cartlist.length;i++){
+//					for(let n=0;n<cartlist[i].datalist.length;n++){
+//						shoppingNum +=cartlist[i].datalist[n].num;
+//					};
+//				}
+//				
+//				return shoppingNum;
+			},
+			carttop(){
+				let $this=this;
+				$this.$router.push({
+					name:'selectgoods',
+					params:{
+						id:"15616513"
+					}
+				})
+				
+			},
 			selectLi(key){
 				this.activeB=key;
 			},
 			handleReduce(index){
 				let $this=this;
-				let cartData=$this.category[$this.activeB].dataArr[index];
+				let cartData=$this.category.goods[$this.activeB].goodslist[index];
 				let updateDate={
 					cartname:"乡村基（枫丹店）",
 					datalist:[cartData]
@@ -184,18 +150,18 @@
 				if(cartData.num===0) return;
 				cartData.num--;
 				
-				this.$store.commit("cartlist",updateDate);
+//				this.$store.commit("cartlist",updateDate);
 				
 			},
 			handleAdd(index){
 				let $this=this;
-				let cartData=$this.category[$this.activeB].dataArr[index];
+				let cartData=$this.category.goods[$this.activeB].goodslist[index];
 				let updateDate={
 					cartname:"乡村基（枫丹店）",
 					datalist:[cartData]
 				}
 				console.log(cartData)
-				this.$store.commit("cartlist",updateDate);
+//				this.$store.commit("cartlist",updateDate);
 				cartData.num++;
 			}
 		}

@@ -17,23 +17,7 @@
 	        	</div>
 	        </div>
 		</div>
-		<div class="shoppingCart">
-			<div>
-				<div class="cart-bg">
-					<div class="cart-bg-icon"></div>
-					<div v-if="shoppingNum>0" class="cart-bg-icon2"></div>
-					<span v-if="shoppingNum>0" class="cart-num">{{shoppingNum}}</span>
-				</div>
-				<p style="text-align: left;width: auto;display: inline-block;float: left;">
-					<span style="color: #ffffff;font-size: 20px;">￥{{prices}}</span>
-					<del style="color: #999;font-size: 14px;">￥24</del>
-				</p>
-			</div>
-			
-			<div v-bind:class="shoppingNum>0?'succes-btn':'off-btn'" @click="carttop">
-				查看已选商品
-			</div>
-		</div>
+		
 	</div>
 </template>
 
@@ -100,31 +84,8 @@
 			author(){
 				return this.$store.state.author
 			},
-			shoppingNum(){
-				var $this=this;
-				let shoppingNum=0;
-				const cartlist=$this.$store.state.cartlist;
-				console.log(cartlist)
-				if(shoppingNum>0){
-					shoppingNum=0;
-				}
-				for(let i=0;i<cartlist.length;i++){
-					for(let n=0;n<cartlist[i].datalist.length;n++){
-						shoppingNum +=cartlist[i].datalist[n].num;
-					};
-				}
-				
-				return shoppingNum;
-			},
-			prices(){
-
-				var totalProce=0;
-				let cartlist=this.cartlist;
-				for(var i=0;i<cartlist.datalist.length;i++){
-					totalProce +=cartlist.datalist[i].num*cartlist.datalist[i].price;
-				};
-				return totalProce.toFixed(1)==0?0:totalProce.toFixed(1)
-			}
+			
+			
 			
 		},
 		methods:{ // 事件定义
@@ -139,16 +100,7 @@
 				this.$store.commit("cartlist",this.cartlist);
 				this.cartlist.datalist[index].num++;
 			},
-			carttop(){
-				let $this=this;
-				$this.$router.push({
-					name:'selectgoods',
-					params:{
-						id:"15616513"
-					}
-				})
-				
-			}
+			
 		}
 	}
 </script>

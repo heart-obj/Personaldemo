@@ -7,9 +7,10 @@ import router from './router'
 import axios from 'axios';
 import store from './vuex/store'
 import ElementUI from 'element-ui';
+import vueResource from 'vue-resource';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'swiper/dist/css/swiper.css';
-Vue.use(ElementUI,Vuex);
+Vue.use(ElementUI,Vuex,vueResource);
 Vue.config.productionTip = false;
 Vue.prototype.$http=axios;
 Vue.prototype.$store=store;
