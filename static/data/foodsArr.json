@@ -2,7 +2,7 @@
 	{
 		"storename": "饭戒",
 		"storeid": "1061",
-		"goods": [
+		"storegoods": [
 			{
 				"category": "推荐",
 				"recommend": 1,

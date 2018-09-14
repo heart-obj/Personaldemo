@@ -7,8 +7,8 @@
 			<el-row>
 				<el-col :span="6">
 					<div class="container-left">
-						<ul>
-							<li v-for="(val,key) in category.goods" v-if="key>0" :class="activeB==key?active:false" v-bind:key="key" @click="selectLi(key)">
+						<ul v-if="category != null">
+							<li v-for="(val,key) in category.storegoods" v-if="key>0" :class="activeB==key?active:false" v-bind:key="key" @click="selectLi(key)">
 								<el-row>
 									<el-col :span="4">
 											<img src="//fuss10.elemecdn.com/7/59/9165195495ce2960ade8a326e8e81png.png?imageMogr/format/webp/thumbnail/26x/" alt="" width="16px" height="16px" style="float: left;" />							
@@ -22,8 +22,8 @@
 					</div>
 				</el-col>
 				<el-col :span="18">
-					<ul class="container-right">
-						<li class="goodslist" v-for="(val,key) in category.goods[activeB].goodslist" v-bind:key="key">
+					<ul v-if="category != null" class="container-right">
+						<li class="goodslist" v-for="(val,key) in category.storegoods[activeB].goodslist" v-bind:key="key">
 							<img v-bind:src="val.img" alt="" width="100px" height="100px"/>
 							<div class="goods-detail">
 								<div style="font-size: 16px;font-weight: 600;width: 80%;overflow: hidden;overflow-wrap: break-word;">{{val.goodsname}}</div>
@@ -94,9 +94,12 @@
 				for(let i=0;i<response.data.length;i++){
 					if(response.data[i].storeid=="1061"){
 						$this.category=response.data[i];
+						return;
 					}
 				};
 				console.log($this.category)
+			}).catch((response)=>{
+				$this.category=[];
 			})
 		},
 		components:{
@@ -142,7 +145,7 @@
 			},
 			handleReduce(index){
 				let $this=this;
-				let cartData=$this.category.goods[$this.activeB].goodslist[index];
+				let cartData=$this.category.storegoods[$this.activeB].goodslist[index];
 				let updateDate={
 					cartname:"乡村基（枫丹店）",
 					datalist:[cartData]
@@ -155,14 +158,15 @@
 			},
 			handleAdd(index){
 				let $this=this;
-				let cartData=$this.category.goods[$this.activeB].goodslist[index];
+				let cartData=$this.category.storegoods[$this.activeB].goodslist[index];
 				let updateDate={
 					cartname:"乡村基（枫丹店）",
 					datalist:[cartData]
 				}
-				console.log(cartData)
-//				this.$store.commit("cartlist",updateDate);
 				cartData.num++;
+//				this.$store.commit("cartlist",updateDate);
+				
+				console.log($this.category)
 			}
 		}
 	}

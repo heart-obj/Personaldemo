@@ -1,6 +1,6 @@
 <template>
 	
-	<div class="commend-box swiper-container">
+	<div class="commend-box swiper-container" v-if="cartlist">
 		<div style="font-size: 26px;color: #000000;">商家推荐</div>
 		<div class="swiper-wrapper">
 	        <div v-for="(val,key) in cartlist.datalist" class="swiper-slide" v-bind:key="key">
@@ -33,7 +33,8 @@
 			}
 		},
 		created(){ // 初始化之前加载
-			var $this=this;
+			const $this=this;
+			
 			if($this.$store.state.cartlist.length>0){
 				console.log($this.$store.state.cartlist)
 				for(let i=0;i<$this.$store.state.cartlist.length;i++){
@@ -43,30 +44,26 @@
 				}
 				
 			}else{
-				$this.cartlist={
-					cartname:"乡村基（枫丹店）",
-					datalist:[{
-						goodsname:"农家炒肉双拼套餐",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:17.9
-					},
-					{
-						goodsname:"农家青椒炒肉套餐",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:24,
-					},
-					{
-						goodsname:"农家腊肉盖饭",
-						sales:"11",
-						rete:"100%",
-						num:0,
-						price:15
-					}]
-				}
+				$this.$http({
+					methods:"get",
+					url:"static/data/foodsArr.json",
+				}).then((response)=>{
+					let datalist=response.data;
+					for(let i=0;i<datalist.length;i++){
+						console.log(datalist)
+						if(datalist[i].storeid=="1061"){
+							for(let j=0;i<datalist[i].storegoods.length;j++){
+								if(datalist[i].storegoods[j].recommend==1){
+									console.log(datalist[i].storegoods[j])
+									$this.cartlist=datalist[i].storegoods[j].goodslist;
+									return;
+								}
+							}
+							
+						}
+						
+					}
+				})
 			}
 			
 		},
@@ -90,15 +87,11 @@
 		},
 		methods:{ // 事件定义
 			handleReduce(index){
-				console.log(index)
-				if(this.cartlist.datalist[index].count===0) return;
-				this.cartlist.datalist[index].num--;
-				this.$store.commit("cartlist",this.cartlist);
+				
 				
 			},
 			handleAdd(index){
-				this.$store.commit("cartlist",this.cartlist);
-				this.cartlist.datalist[index].num++;
+				
 			},
 			
 		}
