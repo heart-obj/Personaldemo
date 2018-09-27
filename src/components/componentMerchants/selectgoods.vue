@@ -16,7 +16,7 @@
 						</el-row>
 					</el-col>
 					<el-col :span="24">
-						<div class="goods-col" v-for="(val,key) in goodslist.datalist" v-if="val.num>0">
+						<div class="goods-col" v-for="(val,key) in goodslist.datalist" v-if="val.num">
 							<el-row>
 								<el-col :span="8" class="goods-name">{{val.goodsname}}</el-col>
 								<el-col :span="4" class="goods-num">{{val.num}}</el-col>

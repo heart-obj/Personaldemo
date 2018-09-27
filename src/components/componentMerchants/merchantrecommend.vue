@@ -3,7 +3,7 @@
 	<div class="commend-box swiper-container" v-if="cartlist">
 		<div style="font-size: 26px;color: #000000;">商家推荐</div>
 		<div class="swiper-wrapper">
-	        <div v-for="(val,key) in cartlist.datalist" class="swiper-slide" v-bind:key="key">
+	        <div v-for="(val,key) in cartlist" class="swiper-slide" v-bind:key="key">
 	        	<div class="logo-img"><img src="//fuss10.elemecdn.com/0/ef/c440d90e4af8833e6abc5a0a1bf2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/" alt="" width="100%" height="100%" /></div>
 	        	<div>
 	        		<span class="food-name">{{val.goodsname}}</span>
@@ -28,13 +28,11 @@
 		data(){
 			return {
 				name:"商家推荐",
-				cartlist:''
-				
+				cartlist:null
 			}
 		},
 		created(){ // 初始化之前加载
 			const $this=this;
-			
 			if($this.$store.state.cartlist.length>0){
 				console.log($this.$store.state.cartlist)
 				for(let i=0;i<$this.$store.state.cartlist.length;i++){
@@ -54,9 +52,19 @@
 						if(datalist[i].storeid=="1061"){
 							for(let j=0;i<datalist[i].storegoods.length;j++){
 								if(datalist[i].storegoods[j].recommend==1){
-									console.log(datalist[i].storegoods[j])
 									$this.cartlist=datalist[i].storegoods[j].goodslist;
-									return;
+									$this.$nextTick(function(){
+										new Swiper('.swiper-container',{
+											direction:"horizontal",
+											loop: true,
+											height:"100%",
+											slidesPerView:3,
+											slidesPerGroup:1,
+											observer:true,//修改swiper自己或子元素时，自动初始化swiper
+											observeParents:true//修改swiper的父元素时，自动初始化swiper
+										});
+									})
+									break;
 								}
 							}
 							
@@ -68,14 +76,7 @@
 			
 		},
 		mounted(){// 在模板渲染完成后或者el对应的html渲染后调用
-			new Swiper('.swiper-container',{
-				direction:"horizontal",
-				loop: true,
-				height:"100%",
-				slidesPerView:3,
-				slidesPerGroup:1,
-				
-			})
+			
 		},
 		computed:{// 计算属性 ：复杂的逻辑计算可在此定义
 			author(){
@@ -98,7 +99,7 @@
 	}
 </script>
 
-<style>
+<style 	>
 	.commend-box{
 		width: 100%;
 	}
