@@ -6,7 +6,7 @@
 	        <div v-for="(val,key) in cartlist" class="swiper-slide" v-bind:key="key">
 	        	<div class="logo-img"><img src="//fuss10.elemecdn.com/0/ef/c440d90e4af8833e6abc5a0a1bf2djpeg.jpeg?imageMogr/format/webp/thumbnail/240x/" alt="" width="100%" height="100%" /></div>
 	        	<div>
-	        		<span class="food-name">{{val.goodsname}}</span>
+	        		<span class="food-name" v-bind:title="val.goodsname">{{val.goodsname}}</span>
 	        		<span class="sales">月售{{val.sales}} 好评率{{val.rete}}</span>
 	        	</div>
 	        	<div>
@@ -56,7 +56,7 @@
 									$this.$nextTick(function(){
 										new Swiper('.swiper-container',{
 											direction:"horizontal",
-											loop: true,
+											loop: false,
 											height:"100%",
 											slidesPerView:3,
 											slidesPerGroup:1,
@@ -88,11 +88,12 @@
 		},
 		methods:{ // 事件定义
 			handleReduce(index){
-				
+				if(this.cartlist[index].num--<0) return
+				this.cartlist[index].num--;
 				
 			},
 			handleAdd(index){
-				
+				this.cartlist[index].num++;
 			},
 			
 		}
@@ -114,6 +115,10 @@
 	}
 	.food-name{
 		font-size: 14px;
+		height: 16px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		color: #000000;
 		display: inline-block;
 		width: 100%;
